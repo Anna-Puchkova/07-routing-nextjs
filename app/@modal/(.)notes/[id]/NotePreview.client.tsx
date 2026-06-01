@@ -13,6 +13,8 @@ export default function NotePreview() {
 
   const id = params?.id;
 
+  if (!id) return null;
+
   const {
     data: note,
     isLoading,
@@ -23,8 +25,6 @@ export default function NotePreview() {
     enabled: !!id,
     refetchOnMount: false,
   });
-
-  if (!id) return null;
 
   return (
     <Modal onClose={() => router.back()}>
