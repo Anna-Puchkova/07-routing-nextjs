@@ -44,9 +44,9 @@ export default function NotesClient({ tag }: Props) {
         </div>
 
         <div className={css.center}>
-          {data?.totalPages > 1 && (
+          {(data?.totalPages ?? 0) > 1 && (
             <Pagination
-              pageCount={data.totalPages}
+              pageCount={data?.totalPages ?? 0}
               currentPage={page}
               onPageChange={setPage}
             />
