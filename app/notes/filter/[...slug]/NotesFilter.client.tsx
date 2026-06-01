@@ -45,13 +45,15 @@ export default function NotesClient({ tag }: { tag?: NoteTag }) {
         </div>
 
         <div className={css.center}>
-          {(data?.totalPages ?? 0) > 1 && (
-            <Pagination
-              pageCount={data?.totalPages ?? 0}
-              currentPage={page}
-              onPageChange={setPage}
-            />
-          )}
+          <div className={css.center}>
+            {(data?.totalPages ?? 0) > 1 && (
+              <Pagination
+                pageCount={data?.totalPages ?? 0}
+                currentPage={page}
+                onPageChange={setPage}
+              />
+            )}
+          </div>
         </div>
 
         <div className={css.right}>
