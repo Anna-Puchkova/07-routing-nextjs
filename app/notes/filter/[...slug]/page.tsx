@@ -8,16 +8,16 @@ import { fetchNotes } from "@/lib/api";
 import NotesClient from "./Notes.client";
 import type { NoteTag } from "@/types/note";
 
+type Params = {
+  slug: string[];
+};
+
 const TAGS: NoteTag[] = ["Todo", "Work", "Personal", "Meeting", "Shopping"];
 
 function parseTag(slug?: string): NoteTag | undefined {
   if (!slug || slug === "all") return undefined;
   return TAGS.includes(slug as NoteTag) ? (slug as NoteTag) : undefined;
 }
-
-type Params = {
-  slug: string[];
-};
 
 export default async function Page({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
