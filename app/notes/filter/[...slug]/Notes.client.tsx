@@ -38,6 +38,8 @@ export default function NotesClient({ tag }: Props) {
       }),
   });
 
+  const notes = data?.notes ?? [];
+
   return (
     <div className={css.app}>
       <header className={css.toolbar}>
@@ -65,10 +67,10 @@ export default function NotesClient({ tag }: Props) {
       {isLoading && <p>Loading...</p>}
       {isError && <p>Error</p>}
 
-      <NoteList notes={data?.notes ?? []} />
+      {notes.length > 0 && <NoteList notes={notes} />}
 
       {isModalOpen && (
-        <Modal>
+        <Modal onClose={() => setIsModalOpen(false)}>
           <NoteForm onClose={() => setIsModalOpen(false)} />
         </Modal>
       )}
