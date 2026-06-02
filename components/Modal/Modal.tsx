@@ -10,7 +10,7 @@ interface ModalProps {
   onClose: () => void;
 }
 
-export default function Modal({ children }: ModalProps) {
+export default function Modal({ children, onClose }: ModalProps) {
   const router = useRouter();
 
   const onClose = () => router.back();
