@@ -11,6 +11,7 @@ import { useDebouncedCallback } from "use-debounce";
 
 import type { NoteTag } from "@/types/note";
 import css from "./NotesPage.module.css";
+import Modal from "@/components/Modal/Modal";
 
 export default function NotesClient({ tag }: { tag?: NoteTag }) {
   const [page, setPage] = useState(1);
@@ -68,7 +69,11 @@ export default function NotesClient({ tag }: { tag?: NoteTag }) {
 
       {data && <NoteList notes={data.notes} />}
 
-      {isModalOpen && <NoteForm onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && (
+        <Modal onClose={() => setIsModalOpen(false)}>
+          <NoteForm onClose={() => setIsModalOpen(false)} />
+        </Modal>
+      )}
     </div>
   );
 }
